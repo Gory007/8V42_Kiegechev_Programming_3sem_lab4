@@ -18,7 +18,16 @@ endif()
 
 add_definitions(-DVERSION_PROJECT=${GIT_COMMIT_COUNT})
 
-add_executable(lab4 main.cpp)
+add_executable(
+    lab4 main.cpp
+    allocator.h
+    my_forward_list.h)
+
+set_source_files_properties(
+    allocator.h
+    my_forward_list.h
+    PROPERTIES HEADER_FILE_ONLY TRUE
+)
 
 target_include_directories(lab4 PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
