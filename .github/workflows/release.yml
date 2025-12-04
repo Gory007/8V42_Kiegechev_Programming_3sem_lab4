@@ -71,13 +71,13 @@ jobs:
 
       - name: Run and test
         run: |
-          echo "1" | ./build/lab3
+          echo "1" | ./build/lab4
           echo "Program executed successfully"
 
       - name: Verify version
         run: |
           echo "=== Program output ==="
-          output=$(echo "1" | ./build/lab3)
+          output=$(echo "1" | ./build/lab4)
           echo "$output"
           if echo "$output" | grep -q "Version"; then
             echo "✓ Version found in output"
@@ -94,7 +94,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.create-release.outputs.new_tag }}
-          files: lab3-*.deb
+          files: lab4-*.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -118,13 +118,13 @@ jobs:
 
       - name: Run and test
         run: |
-          echo "1" | .\build\lab3.exe
+          echo "1" | .\build\lab4.exe
           echo "Program executed successfully"
 
       - name: Verify version
         run: |
           echo "=== Program output ==="
-          $output = echo "1" | .\build\lab3.exe
+          $output = echo "1" | .\build\lab4.exe
           echo $output
           if ($output -like "*Version*") {
             echo "✓ Version found in output"
@@ -141,6 +141,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.create-release.outputs.new_tag }}
-          files: lab3-*.zip
+          files: lab4-*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
