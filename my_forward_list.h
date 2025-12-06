@@ -3,10 +3,7 @@
 #include <cstddef>
 #include <utility>
 
-// ---------------------------------------
-//   MyForwardList<T, Alloc>
-//   простой односвязный список с поддержкой аллокатора
-// ---------------------------------------
+
 
 template <typename T, typename Alloc = std::allocator<T>>
 class MyForwardList {
@@ -23,9 +20,8 @@ private:
     using NodeTraits = std::allocator_traits<NodeAlloc>;
 
 public:
-    // ---------------------------------------
+
     //   Итератор
-    // ---------------------------------------
     struct iterator {
         using reference = T&;
         using pointer = T*;
@@ -48,9 +44,8 @@ public:
         friend class MyForwardList;
     };
 
-    // ---------------------------------------
+
     //   Конструкторы
-    // ---------------------------------------
     MyForwardList() : head(nullptr), tail(nullptr), sz(0), alloc() {}
 
     explicit MyForwardList(const Alloc& a)
@@ -58,18 +53,16 @@ public:
 
     ~MyForwardList() { clear(); }
 
-    // ---------------------------------------
+
     //   Итераторы
-    // ---------------------------------------
     iterator begin() { return iterator(head); }
     iterator end() { return iterator(nullptr); }
 
     iterator begin() const { return iterator(head); }
     iterator end() const { return iterator(nullptr); }
 
-    // ---------------------------------------
+
     //   Методы
-    // ---------------------------------------
     void push_back(const T& value) {
         Node* node = NodeTraits::allocate(alloc, 1);
         NodeTraits::construct(alloc, node, value);
@@ -98,7 +91,7 @@ public:
     }
 
 private:
-    // данные
+    
     Node* head;
     Node* tail;
     std::size_t sz;

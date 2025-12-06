@@ -26,16 +26,12 @@ void print_list(const List& l) {
 
 int main() {
 
-    // ---------------------------------------
-    // 1. std::map с обычным аллокатором
-    // ---------------------------------------
+    // std::map с обычным аллокатором
     std::map<int, int> m_default;
     for (int i = 0; i <= 9; i++)
         m_default[i] = factorial(i);
 
-    // ---------------------------------------
-    // 2. std::map с пользовательским PoolAllocator
-    // ---------------------------------------
+    // std::map с пользовательским PoolAllocator
     using Pair = std::pair<const int, int>;
 
     PoolAllocator<Pair> poolAllocForMap(10);
@@ -51,9 +47,7 @@ int main() {
     std::cout << "\nMap (pool allocator):\n";
     print_map(m_pool);
 
-    // ---------------------------------------
-    // 3. Пользовательский контейнер
-    // ---------------------------------------
+    // Пользовательский контейнер
     MyForwardList<int> list_default;
     for (int i = 0; i <= 9; i++)
         list_default.push_back(i);
